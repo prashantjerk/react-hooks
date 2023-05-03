@@ -83,6 +83,8 @@ export default App;
 
 <i>Example 2</i> is the right way to do it. We are calling `useState` before the end of `MyComponent()`, which is allowed. This code will work as expected and render a message followed by the `MyComponent()`.
 
+<hr>
+
 #### Now lets dive deep into different types of react hooks
 
 Here are few commonly used react hooks and their use:
@@ -100,6 +102,8 @@ Here are few commonly used react hooks and their use:
 
 ⚠️ During this documentation, React hooks are not available for class components. It is possible that they may become available in the future. ⚠️
 
+<hr>
+
 ## `useState`
 
 <u>Lets learn about this hook by the help of its syntax:</u>
@@ -113,7 +117,7 @@ function MyComponent() {
  // Declare a state variable using the useState hook
  const [stateVariable, setStateVariable] = useState(initialState);
 
- // create a function
+ // create a function to update `stateVariable`
  return (
    <div>
      <p>The value of my state variable is: {stateVariable}</p>
@@ -152,10 +156,13 @@ function Counter() {
   );
 }
 ```
+
 In this <i>Example 4,</i> we're using the `useState` hook to declare a state variable called `count` with an initial value of 0. We're also using the `setCount` function to update the value of count i.e. increasing by 1.
 
 We're then rendering the current value of count in a paragraph element and a button that, when clicked, calls the `handleClick` function to update the value of `count` using `setCount`.
 
 Whenever `setCount` is called, React will re-render the component with the updated value of `count`.
 
-Here, all you need to understand is about the current value: `count`, initial value: `0` and the value-updating-function: `setCount` which updates the value present inside `count`. 
+Here, all you need to understand is about the current value: `count`, initial value: `0` and the value-updating-function: `setCount` which updates the value present inside `count`.
+
+<hr>
