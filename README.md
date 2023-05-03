@@ -1,1 +1,84 @@
-# react-hooks
+# React Hooks
+
+Here, I'll try to explain mostly used react hooks with their syntax and common mistakes done by the users. Also, <b>feel free to add or modify</b> the documentaion.
+
+In react, hooks were introduced in v16.8.0. They were introduced to make writing codes easily using react. We'll learn how they make things easier later on.
+
+React functions starting with `use` are <i>Hooks.</i> There are several react hooks provided, we can use them based on our requirements, and we can also combine the existing hooks.
+
+### Points to know
+
+#### 1. call react hooks before the functional components or another hook
+
+This means, hooks such as `useState`, `useEffect`, `useContext`, etc., can only be called at the top level of a functional component or inside another custom hook.
+
+When using hooks, React relies on the order of the hooks to maintain the state of the component. Hooks must be called in the same order on every render of the component.
+
+If you call a hook inside of a conditional statement, for example, it may not be called on every render of the component, which can lead to inconsistent behavior. Similarly, if you call a hook inside of a nested function, it may not be called in the same order on every render, which can also cause unexpected behavior.
+
+To ensure that hooks work correctly, they must be called at the top level of the component or inside a custom hook, and they must be called in the same order on every render. This allows React to track the state of the component and ensure that it remains consistent throughout the component's lifecycle.
+
+<i>Example 1:</i> ❌Hooks called after the functional component (incorrect)❌
+
+```
+import React, { useState } from 'react';
+
+function MyComponent() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <h1>{count}</h1>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div>
+      <MyComponent />
+      {useState('Hello')} // calling useState after the component
+    </div>
+  );
+}
+
+export default App;
+```
+
+⚠️It's fine if you don't understand what the above code does. The goal right now is to understand dos and don't of react hooks.⚠️
+
+In <i>Example 1,</i> using `{useState('Hello')}` after `MyComponent()` is not a correct place to call the hook `useState`.
+
+<i>Example 2:</i> ✅ Hooks called before the functional component (correct)✅
+
+```
+import React, { useState } from 'react';
+
+function MyComponent() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <h1>{count}</h1>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+    </div>
+  );
+}
+
+function App() {
+  const [message, setMessage] = useState('Hello');
+
+  return (
+    <div>
+      {message}
+      <MyComponent />
+    </div>
+  );
+}
+
+export default App;
+
+```
+
+<i>Example 2</i> is the right way to do it. We are calling `useState` before the end of `MyComponent` function, which is allowed. This code will work as expected and render a message followed by the MyComponent.
