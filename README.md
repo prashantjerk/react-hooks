@@ -86,16 +86,16 @@ export default App;
 #### Now lets dive deep into different types of react hooks
 
 Here are few commonly used react hooks and their use:
-    - `useState`: used for creating and updating state variables in functional components.
-    - `useEffect`: used for managing side effects, such as fetching data or updating the DOM, in functional components.
-    - `useContext`: used for accessing and updating context values in functional components.
-    - `useReducer`: used for managing state in a more complex and structured way than useState, especially when dealing with multiple related state variables and actions.
-    - `useCallback`: used for memoizing functions in functional components to optimize performance.
-    - `useMemo`: used for memoizing values in functional components to optimize performance.
-    - `useRef`: used for creating and accessing a mutable reference value in functional components, such as a reference to a DOM element.
-    - `useLayoutEffect`: similar to `useEffect`, but runs synchronously after all DOM mutations, which can be useful for measuring the size and position of DOM elements.
-    - `useImperativeHandle`: used for exposing a parent component's imperative API to its child component, such as for triggering a child component's method from the parent component.
+    - `useState`: used for creating and updating state variables in functional components
+    - `useEffect`: used for managing side effects, such as fetching data or updating the DOM, in functional components
+    - `useContext`: used for accessing and updating context values in functional components
+    - `useReducer`: used for managing state in a more complex and structured way than useState, especially when dealing with multiple related state variables and actions
+    - `useCallback`: used for memoizing functions in functional components to optimize performance
+    - `useMemo`: used for memoizing values in functional components to optimize performance
+    - `useRef`: used for creating and accessing a mutable reference value in functional components, such as a reference to a DOM element
+    - `useLayoutEffect`: similar to `useEffect`, but runs synchronously after all DOM mutations, which can be useful for measuring the size and position of DOM elements
+    - `useImperativeHandle`: used for exposing a parent component's imperative API to its child component, such as for triggering a child component's method from the parent component
     - `useDebugValue`: used for displaying custom labels and values in the React DevTools when debugging components that use hooks.
-
+    
 ⚠️ During this documentation, React hooks are not available for class components. It is possible that they may become available in the future. ⚠️
  
