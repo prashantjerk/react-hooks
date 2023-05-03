@@ -8,7 +8,7 @@ React functions starting with `use` are <i>Hooks.</i> There are several react ho
 
 ### Points to know
 
-#### 1. call react hooks before the functional components or another hook
+#### - call react hooks before the functional components or another hook
 
 This means, hooks such as `useState`, `useEffect`, `useContext`, etc., can only be called at the top level of a functional component or inside another custom hook.
 
@@ -46,7 +46,7 @@ function App() {
 export default App;
 ```
 
-⚠️It's fine if you don't understand what the above code does. The goal right now is to understand dos and don't of react hooks.⚠️
+⚠️It's fine if you don't understand what the above code does. The goal right now is to understand dos and don'ts of react hooks.⚠️
 
 In <i>Example 1,</i> using `{useState('Hello')}` after `MyComponent()` is not a correct place to call the hook `useState`.
 
@@ -81,4 +81,21 @@ export default App;
 
 ```
 
-<i>Example 2</i> is the right way to do it. We are calling `useState` before the end of `MyComponent` function, which is allowed. This code will work as expected and render a message followed by the MyComponent.
+<i>Example 2</i> is the right way to do it. We are calling `useState` before the end of `MyComponent()`, which is allowed. This code will work as expected and render a message followed by the `MyComponent()`.
+
+#### Now lets dive deep into different types of react hooks
+
+Here are few commonly used react hooks and their use:
+    - `useState`: used for creating and updating state variables in functional components.
+    - `useEffect`: used for managing side effects, such as fetching data or updating the DOM, in functional components.
+    - `useContext`: used for accessing and updating context values in functional components.
+    - `useReducer`: used for managing state in a more complex and structured way than useState, especially when dealing with multiple related state variables and actions.
+    - `useCallback`: used for memoizing functions in functional components to optimize performance.
+    - `useMemo`: used for memoizing values in functional components to optimize performance.
+    - `useRef`: used for creating and accessing a mutable reference value in functional components, such as a reference to a DOM element.
+    - `useLayoutEffect`: similar to `useEffect`, but runs synchronously after all DOM mutations, which can be useful for measuring the size and position of DOM elements.
+    - `useImperativeHandle`: used for exposing a parent component's imperative API to its child component, such as for triggering a child component's method from the parent component.
+    - `useDebugValue`: used for displaying custom labels and values in the React DevTools when debugging components that use hooks.
+
+⚠️ During this documentation, React hooks are not available for class components. It is possible that they may become available in the future. ⚠️
+ 
