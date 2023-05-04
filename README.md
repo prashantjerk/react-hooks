@@ -6,7 +6,7 @@ In react, hooks were introduced since v16.8.0. They were introduced to make writ
 
 React functions starting with `use` are <i>Hooks.</i> There are several react hooks provided, we can use them based on our requirements, and we can also combine the existing hooks.
 
-### Points to know
+### Point to know
 
 #### - call react hooks before the functional components or another hook
 
@@ -166,3 +166,51 @@ Whenever `setCount` is called, React will re-render the component with the updat
 Here, all you need to understand is about the current value: `count`, initial value: `0` and the value-updating-function: `setCount` which updates the value present inside `count`.
 
 <hr>
+
+If we need to change update the count state in class component, we need to call `this,setState()`.
+<i>Example 5:</i>
+
+```
+  <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+  Increment
+  </button>
+```
+
+However, in function component, it's simple as mentioned above.
+Below example is for comparing with <i>Example 5:</i>
+
+<i>Example 6:</i>
+
+```
+  <button onClick={() => setCount(count + 1)}>
+  Click me
+  </button>
+```
+
+<u>Some common mistakes made by beginners</u>
+
+#### 1. Not using react setter function
+
+Lets take the same counter program for explanation:
+<i>Example 7:</i>
+We should not write our code as below, it may work in this example, but as the program becomes more complex, it will lead to some unexpected behaviour:
+
+```
+  const handleClick = () => {
+    // Directly modifying the state, which is not allowed
+    count++;
+    setCount(count);
+  };
+```
+
+<i>Example 7,</i> is not a recommended approach. Instead we should use setter function as:
+<i>Example 8:</i>
+
+```
+  const handleClick = () => {
+    // Using the setter function to update the state
+    setCount(count + 1);
+  };
+```
+
+In <i>Example 8,</i> we're using `setCount`, and this is the recommended approach.
