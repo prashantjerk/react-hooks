@@ -2,7 +2,7 @@
 
 Here, I'll try to explain mostly used react hooks with their syntax and common mistakes done by the users. Also, <b>feel free to add or modify</b> the documentaion.
 
-In react, hooks were introduced since v16.8.0. They were introduced to make writing codes easily using react. We'll learn how they make things easier later on.
+In react, hooks were introduced since v16.8.0. They were introduced to make writing easier in react. We'll learn how they make things easier later on.
 
 React functions starting with `use` are <i>Hooks.</i> There are several react hooks provided, we can use them based on our requirements, and we can also combine the existing hooks.
 
@@ -167,7 +167,7 @@ Here, all you need to understand is about the current value: `count`, initial va
 
 <hr>
 
-If we need to change update the count state in class component, we need to call `this,setState()`.
+If we need to change update the count state in class component, we need to call `this.setState()`.
 <i>Example 5:</i>
 
 ```
@@ -187,7 +187,7 @@ Below example is for comparing with <i>Example 5:</i>
   </button>
 ```
 
-<u>Some common mistakes made by beginners</u>
+## Point to know about `useState`
 
 #### 1. Not using react setter function
 
@@ -214,3 +214,26 @@ We should not write our code as below, it may work in this example, but as the p
 ```
 
 In <i>Example 8,</i> we're using `setCount`, and this is the recommended approach.
+
+#### 2. Not providing initial value
+
+Some times we tend to forget to provide the initial value to the variable. On doing so the state variable will be set to `undefined`. If the intention is to give an `empty` or a `null` value to the variable we should at least write `useState("")`.
+
+#### 3. Not handling asynchronous updates
+
+The `useState` hook updates the state asynchronously, which means that the state may not be updated immediately after calling the setter function. This can lead to issues where the component is re-rendered with an outdated state value. To avoid this, you can use the `useEffect` hook to perform side effects after the state has been updated.
+
+#### 4. Not using previous state value
+
+In <i>Example 8,</i> we considered it a better approach, but there is more better approach to that which is:
+
+<i>Example 9</i>
+
+```
+  const increment = () => {
+    // Using the previous state value to update the state correctly
+    setCount(prevCount => prevCount + 1);
+  };
+```
+
+In <i>Example 9,</i> we are using `prevCount` which ensures that the updated value is correct and up-to-date. This is useful as it avoid race conditions that may occur when the multiple state updates are triggered in rapidly.
