@@ -291,3 +291,59 @@ useEffect(() => {
   };
 });
 ```
+
+Here is a proper example of it.
+<i>Example 11:</i>
+
+```
+import React, { useEffect, useState } from 'react';
+
+function ExampleComponent() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log("Hello React! Something changed.");
+  }, [count]);
+
+  const incrementCount = () => {
+    setCount(prevCount => prevCount + 1);
+  };
+
+  return (
+    <div>
+      <button onClick={incrementCount}>Increment</button>
+      <p>Count: {count}</p>
+    </div>
+  );
+}
+```
+
+In <i>Example 11:</i> we have combined the previous example of `useState` and `useEffect`. Here in this example, you can see `[count]` inside `useEffect()` which means that we get to see "Hello React! Something changed." everytime the value of `count` changes which is each time the `button` is clicked.
+
+<i>Example 12:</i>
+
+```
+import React, { useEffect, useState } from 'react';
+
+function ExampleComponent() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log("Hello React! Something changed.");
+  }, []);
+
+  const incrementCount = () => {
+    setCount(prevCount => prevCount + 1);
+  };
+
+  return (
+    <div>
+      <button onClick={incrementCount}>Increment</button>
+      <p>Count: {count}</p>
+    </div>
+  );
+}
+```
+
+In <i>Example 12:</i>, we have removed `count` from the `[]` which means that "Hello React! Something changed."can be seen only once when the site is refreshed, not after each button click.
+
