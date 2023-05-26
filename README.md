@@ -237,3 +237,57 @@ In <i>Example 8,</i> we considered it a better approach, but there is more bette
 ```
 
 In <i>Example 9,</i> we are using `prevCount` which ensures that the updated value is correct and up-to-date. This is useful as it avoid race conditions that may occur when the multiple state updates are triggered in rapidly.
+
+<hr>
+
+## `useEffect`
+
+Let's understand when to use the `useEffect` hook. The `useEffect` hook is used in React to perform side effects, such as fetching data from an API or updating the DOM, based on specific conditions or triggers.
+
+For example, imagine you're building a quote generator site that pulls quotes and author names from an API. The API has a limit on the number of requests users can make. To optimize the usage, you can use `useEffect` to fetch the quotes only once when the site is refreshed, reducing unnecessary API calls. You can set up the effect to run on component mount, ensuring the quotes are fetched and displayed to the user.
+
+Another example is when you have a large collection of dishes and you want to search for dishes containing the word 'chicken'. You can use `useEffect` to fetch the filtered dishes after the user completes typing the word and clicks the 'search' button. This way, the fetch operation is triggered by the user's action and avoids unnecessary intermediate fetches as they type each character.
+
+By using the `useEffect` hook, you can control when and how these asynchronous operations are performed, ensuring efficient data fetching and providing a better user experience.
+
+<u>Lets learn about this hook by the help of its syntax:</u>
+
+<i>Example 10:</i>
+
+```
+useEffect(() => {
+  // Side effect code here
+
+  return () => {
+    // Cleanup code here (optional)
+  };
+}, [dependency1, dependency2, ...]);
+```
+
+In this above syntax you can clearly see the useEffect is a function as it is written as `useEffect()` which takes two different parameters separated by a comma. The first parameter is what we want to return, which is usually an arrow function, and the next parameter is a `dependency array` which states when to execute the hook.
+
+In the above syntax the hook is executed when there is change in `dependency1`, `dependency2` and other dependencies whichever is mentioned after it. This is one of the cases. Lets say <u><i>Case1</i></u>
+
+The other case, <u><i>Case2</i></u> can be as mentioned earlier when you want to execute it only once when the site it refreshed instead of executing after each render. In that case you can remove all the dependencies from the array and only keep `[]` after the comma as:
+
+```
+useEffect(() => {
+  // Side effect code here
+
+  return () => {
+    // Cleanup code here (optional)
+  };
+}, []);
+```
+
+The other case, <u><i>Case3</i></u> can be when you want to execute the code everytime the site is rendered. In that case you can remove the whole dependency array and only keep the first parameter `i.e. an arrow function`. Here is how it means:
+
+```
+useEffect(() => {
+  // Side effect code here
+
+  return () => {
+    // Cleanup code here (optional)
+  };
+});
+```
